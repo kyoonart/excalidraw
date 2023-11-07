@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { coordinated } from "./controlers";
+import { coordinated } from "./controllers";
 const App = () => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -9,13 +9,11 @@ const App = () => {
     if (containerRef.current && canvasRef.current) {
       const containerDOMRect = containerRef.current.getBoundingClientRect();
 
-      let dpr = window.devicePixelRatio;
+      canvasRef.current.width = containerDOMRect.width;
+      canvasRef.current.height = containerDOMRect.height;
 
-      canvasRef.current.width = dpr * containerDOMRect.width;
-      canvasRef.current.height = dpr * containerDOMRect.height;
       coordinated.init({
         ctx: canvasRef.current.getContext("2d") as CanvasRenderingContext2D,
-        dpr,
       });
       coordinated.renderText("excalidraw", 50, 50);
     }

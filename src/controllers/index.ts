@@ -1,8 +1,7 @@
 class Coordinated {
   ctx: CanvasRenderingContext2D;
-  init(props: { ctx: CanvasRenderingContext2D; dpr: number }) {
+  init(props: { ctx: CanvasRenderingContext2D }) {
     this.ctx = props.ctx;
-    this.ctx.scale(props.dpr, props.dpr);
   }
   renderText(text: string, x: number, y: number) {
     this.ctx.font = "48px serif";
