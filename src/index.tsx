@@ -2,6 +2,7 @@ import * as React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { coordinated } from "./controllers";
+
 const App = () => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
