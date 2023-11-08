@@ -1,9 +1,11 @@
-export const getPixelRatio = (context) => {
-  const backingStore = context.backingStorePixelRatio ||
+export const getPixelRatio = (context, ratio = window.devicePixelRatio) => {
+  const backingStore =
+    context.backingStorePixelRatio ||
     context.webkitBackingStorePixelRatio ||
     context.mozBackingStorePixelRatio ||
     context.msBackingStorePixelRatio ||
     context.oBackingStorePixelRatio ||
-    context.backingStorePixelRatio || 1;
-  return (window.devicePixelRatio || 1) / backingStore;
+    context.backingStorePixelRatio ||
+    1;
+  return (ratio || 1) / backingStore;
 };

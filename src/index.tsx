@@ -12,14 +12,13 @@ const App = () => {
       const containerDOMRect = containerRef.current.getBoundingClientRect();
       coordinated.init({
         canvas: canvasRef.current,
+        containerDOMRect,
       });
-      const ratio = getPixelRatio(coordinated);
-      canvasRef.current.width = containerDOMRect.width * ratio;
-      canvasRef.current.height = containerDOMRect.height * ratio;
-      canvasRef.current.style.width = containerDOMRect.width + 'px';
-      canvasRef.current.style.height = containerDOMRect.height + 'px';
-      coordinated.scale(ratio, ratio);
+
       coordinated.renderText("excalidraw", 50, 50);
+      return () => {
+        coordinated.clear();
+      };
     }
   }, []);
   return (
