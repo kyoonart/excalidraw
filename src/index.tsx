@@ -11,7 +11,7 @@ const App = () => {
     if (containerRef.current && canvasRef.current) {
       const containerDOMRect = containerRef.current.getBoundingClientRect();
       coordinated.init({
-        ctx: canvasRef.current.getContext("2d") as CanvasRenderingContext2D,
+        canvas: canvasRef.current,
       });
       const ratio = getPixelRatio(coordinated);
       canvasRef.current.width = containerDOMRect.width * ratio;
