@@ -21,7 +21,11 @@ class Coordinated {
     this.canvas.addEventListener("mousedown", this.onMousedown);
     this.canvas.addEventListener("mousemove", this.onMousemove);
     this.canvas.addEventListener("mouseup", this.onMouseup);
+    this.canvas.addEventListener("wheel", this.onwheel);
   }
+  onwheel = (event) => {
+    console.log(event);
+  };
   bindTouchEvent() {
     this.canvas.addEventListener("touchstart", this.handleTouchStart, false);
     this.canvas.addEventListener("touchmove", this.handleTouchMove, false);
@@ -29,7 +33,7 @@ class Coordinated {
   }
   bindScale() {
     window.visualViewport?.addEventListener("resize", (e) => {
-      console.log(e);
+      console.log(e?.target?.scale, window.devicePixelRatio);
       const scale = Math.max(e?.target?.scale, window.devicePixelRatio);
       const ratio = getPixelRatio(this.ctx, scale);
       this.scale(ratio, ratio);
